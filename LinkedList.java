@@ -3,6 +3,7 @@ public class LinkedList<E>{
     private Node<E> head;
     private int size;
 
+
     private static class Node<E> {
         E data;
         Node<E> next;
