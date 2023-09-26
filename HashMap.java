@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 public class HashMap<T> {
 
     private LinkedList<Entry>[] buckets;
@@ -34,21 +33,31 @@ public class HashMap<T> {
         size++;
     }
 
+
     public void remove(Object key) {
         int index = hash(key);
         if (buckets[index] == null) {
             return;
         }
+        LinkedList<Entry>[] buckets;
 
-        LinkedList<Entry> bucket = buckets[index];
-        for (Entry entry : bucket) {
-            if (entry.key.equals(key)) {
-                bucket.remove(entry);
-                size--;
-                return;
-            }
-        }
     }
+
+//    public void remove(Object key) {
+//        int index = hash(key);
+//        if (buckets[index] == null) {
+//            return;
+//        }
+//
+//        LinkedList<Entry> bucket = buckets[index];
+//        for (Entry entry : bucket) {
+//            if (entry.key.equals(key)) {
+//                bucket.remove(entry);
+//                size--;
+//                return;
+//            }
+//        }
+//    }
 
     public void clear() {
         for (int i = 0; i < capacity; i++) {
