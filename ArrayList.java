@@ -14,17 +14,25 @@ public class ArrayList<T> {
 
 
     public T get(int index) {
-        return (T) array[index];
+        if (index >= 0) {
+            return (T) array[index];
+        } else {
+            return null;
+        }
     }
 
 
     public void remove(int index) {
-        for (int i = index; i<pointer; i++)
-            array[i] = array[i+1];
-        array[pointer] = null;
-        pointer--;
-        if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
-            resize(array.length/2);
+        if (index >= 0) {
+            for (int i = index; i < pointer; i++)
+                array[i] = array[i + 1];
+            array[pointer] = null;
+            pointer--;
+            if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
+                resize(array.length / 2);
+        } else {
+            throw new RuntimeException();
+        }
     }
 
     public void clear() {
