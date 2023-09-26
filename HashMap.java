@@ -1,5 +1,5 @@
 import java.util.LinkedList;
-public class HashMap {
+public class HashMap<T> {
 
     private LinkedList<Entry>[] buckets;
     private int capacity;
@@ -11,11 +11,12 @@ public class HashMap {
         this.size = 0;
     }
 
+
     private int hash(Object key) {
         return key.hashCode() % capacity;
     }
 
-    public void put(Object key, Object value) {
+    public void put(T key, T value) {
         int index = hash(key);
         if (buckets[index] == null) {
             buckets[index] = new LinkedList<>();
