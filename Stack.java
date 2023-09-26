@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class Stack {
 
 
@@ -7,7 +5,7 @@ public class Stack {
 
 
         public void push(Object value) {
-            elements.addLast(value);
+            elements.add(value);
         }
 
 
@@ -29,10 +27,16 @@ public class Stack {
         }
 
         public Object peek() {
-            return elements.getLast();
+            return elements.get(0);
         }
 
         public Object pop() {
-            return elements.pollLast();
+            if (elements.size()>0) {
+                elements.remove(0);
+            } else {
+                throw new RuntimeException("There is no elements left");
+            }
+            return elements.get(0);
+
         }
-    }
+}
