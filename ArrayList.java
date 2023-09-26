@@ -6,7 +6,7 @@ public class ArrayList<T> {
     private int pointer = 0;
 
 
-    public void add(Object item) {
+    public void add(T item) {
         if(pointer == array.length-1)
             resize(array.length*2);
         array[pointer++] = item;
@@ -25,6 +25,15 @@ public class ArrayList<T> {
         pointer--;
         if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
             resize(array.length/2);
+    }
+
+    public void clear() {
+        for (int i = 0; i < pointer; i++) {
+            if (array[i] != null) {
+                array[i] = null;
+            }
+        }
+        pointer = 0;
     }
 
     public int size() {
