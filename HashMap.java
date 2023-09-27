@@ -18,11 +18,12 @@ public class HashMap<T> {
     public void put(T key, T value) {
         int index = hash(key);
         if (buckets[index] == null) {
-            buckets[index] = new LinkedList<>();
+            buckets[index] = new LinkedList<Entry>();
         }
 
         LinkedList<Entry> bucket = buckets[index];
-        for (Entry entry : bucket) {
+        for (int i = 0; i < bucket.size(); i++) {
+            Entry entry = bucket.get(i);
             if (entry.key.equals(key)) {
                 entry.value = value;
                 return;
@@ -43,21 +44,6 @@ public class HashMap<T> {
 
     }
 
-//    public void remove(Object key) {
-//        int index = hash(key);
-//        if (buckets[index] == null) {
-//            return;
-//        }
-//
-//        LinkedList<Entry> bucket = buckets[index];
-//        for (Entry entry : bucket) {
-//            if (entry.key.equals(key)) {
-//                bucket.remove(entry);
-//                size--;
-//                return;
-//            }
-//        }
-//    }
 
     public void clear() {
         for (int i = 0; i < capacity; i++) {
@@ -77,14 +63,14 @@ public class HashMap<T> {
         if (buckets[index] == null) {
             return null;
         }
-
+        
         LinkedList<Entry> bucket = buckets[index];
-        for (Entry entry : bucket) {
+        for (int i = 0; i < bucket.size(); i++) {
+            Entry entry = bucket.get(i);
             if (entry.key.equals(key)) {
                 return entry.value;
             }
         }
-
         return null;
     }
 }
